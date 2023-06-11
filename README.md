@@ -1,4 +1,4 @@
 "# Astria" 
 
 
-![image](https://github.com/2ndReallyCoolName/Astria/assets/16818715/bc0b52cb-0e57-4491-866d-18457d80949b)
+![image](https://github.com/2ndReallyCoolName/Astria/assets/16818715/953cad38-cdd9-4307-8ccb-7ff99e481411)
