@@ -25,9 +25,10 @@ App::App()
 		Factory(Graphics& gfx): gfx(gfx){}
 
 		std::unique_ptr<Drawable> operator()() {
+			const DirectX::XMFLOAT3 mat = { cdist(rng), cdist(rng), cdist(rng) };
 				return std::make_unique<Box>(
 					gfx, rng, adist, ddist,
-					odist, rdist, bdist
+					odist, rdist, bdist, mat
 					);
 		}
 	private:
@@ -38,6 +39,7 @@ App::App()
 		std::uniform_real_distribution<float> odist{0.0f, 3.1415f * 0.3f};
 		std::uniform_real_distribution<float> rdist{6.0f, 20.0f};
 		std::uniform_real_distribution<float> bdist{ 0.5f, 3.0f };
+		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 7, 20 };
 		std::uniform_int_distribution<int> typedist{ 0, 5 };
@@ -72,7 +74,7 @@ void App::DoFrame()
 	
 	wnd.Gfx().BeginFrame(0.07f, 0.0f, 0.12f);
 	wnd.Gfx().SetCamera(cam.GetMatrix());
-	light.Bind(wnd.Gfx());
+	light.Bind(wnd.Gfx(), cam.GetMatrix());
 
 
 	for (auto& d : drawables)
