@@ -26,11 +26,24 @@ App::App()
 
 		std::unique_ptr<Drawable> operator()() {
 			const DirectX::XMFLOAT3 mat = { cdist(rng), cdist(rng), cdist(rng) };
+			switch (typedist(rng))
+			{
+			case 0:
 				return std::make_unique<Box>(
 					gfx, rng, adist, ddist,
 					odist, rdist, bdist, mat
 					);
+			case 1:
+				return std::make_unique<Pipe>(
+					gfx, rng, adist, ddist, odist,
+					rdist, latDist, longDist
+					);
+			default:
+				assert(false && "impossible drawable option in factory");
+				return {};
+			}
 		}
+
 	private:
 		Graphics& gfx;
 		std::mt19937 rng{ std::random_device{}() };
@@ -42,7 +55,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 7, 20 };
-		std::uniform_int_distribution<int> typedist{ 0, 5 };
+		std::uniform_int_distribution<int> typedist{ 0, 1};
 	};
 
 	drawables.reserve(nDrawables);
