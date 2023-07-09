@@ -2,7 +2,7 @@
 #include "Box.h"
 #include "Cone.h"
 #include "Cylinder.h"
-#include "Ball.h"
+#include "Sphere.h"
 #include "Sheet.h"
 #include "SkinnedBox.h"
 #include <memory>
@@ -44,6 +44,11 @@ App::App()
 					gfx, rng, adist, ddist, odist,
 					rdist, latDist
 					);
+			case 3:
+				return std::make_unique<Sphere>(
+					gfx, rng, adist, ddist, odist,
+					rdist, latDist, longDist
+					);
 			default:
 				assert(false && "impossible drawable option in factory");
 				return {};
@@ -61,7 +66,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 7, 20 };
-		std::uniform_int_distribution<int> typedist{ 0, 2};
+		std::uniform_int_distribution<int> typedist{ 0, 3};
 	};
 
 	drawables.reserve(nDrawables);

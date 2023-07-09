@@ -1,7 +1,7 @@
 #include "SolidSphere.h"
 #include "BindableBase.h"
 #include "GraphicsThrowMacros.h"
-#include "Sphere.h"
+#include "SphereVertices.h"
 
 
 SolidSphere::SolidSphere(Graphics& gfx, float radius)
@@ -15,7 +15,7 @@ SolidSphere::SolidSphere(Graphics& gfx, float radius)
 			dx::XMFLOAT3 pos;
 		};
 
-		auto model = Sphere::Make<Vertex>();
+		auto model = SphereVertices::Make<Vertex>();
 		model.Transform(dx::XMMatrixScaling(radius, radius, radius));
 		AddBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
 		AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));

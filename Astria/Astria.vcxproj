@@ -174,7 +174,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="AstriaException.cpp" />
     <ClCompile Include="AstriaTimer.cpp" />
-    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Bindable.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -218,7 +218,7 @@
     <ClInclude Include="AstriaMath.h" />
     <ClInclude Include="AstriaTimer.h" />
     <ClInclude Include="AstriaWin.h" />
-    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="BindableBase.h" />
     <ClInclude Include="Box.h" />
@@ -259,7 +259,7 @@
     <ClInclude Include="Sheet.h" />
     <ClInclude Include="SkinnedBox.h" />
     <ClInclude Include="SolidSphere.h" />
-    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SphereVertices.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Topology.h" />
