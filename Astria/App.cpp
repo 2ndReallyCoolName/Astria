@@ -1,7 +1,7 @@
 #include "App.h"
 #include "Box.h"
-#include "Pyramid.h"
-#include "Pipe.h"
+#include "Cone.h"
+#include "Cylinder.h"
 #include "Ball.h"
 #include "Sheet.h"
 #include "SkinnedBox.h"
@@ -34,9 +34,15 @@ App::App()
 					odist, rdist, bdist, mat
 					);
 			case 1:
-				return std::make_unique<Pipe>(
+				return std::make_unique<Cylinder>(
 					gfx, rng, adist, ddist, odist,
 					rdist, latDist, longDist
+					);
+
+			case 2:
+				return std::make_unique<Cone>(
+					gfx, rng, adist, ddist, odist,
+					rdist, latDist
 					);
 			default:
 				assert(false && "impossible drawable option in factory");
@@ -55,7 +61,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 7, 20 };
-		std::uniform_int_distribution<int> typedist{ 0, 1};
+		std::uniform_int_distribution<int> typedist{ 0, 2};
 	};
 
 	drawables.reserve(nDrawables);
