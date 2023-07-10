@@ -36,7 +36,7 @@ Sphere::Sphere(Graphics& gfx, std::mt19937& rng, std::uniform_real_distribution<
 
 	auto model = SphereVertices::MakeTesselatedIndependentCapNormals<Vertex>(latDist(rng), longDist(rng));
 
-	model.Transform(dx::XMMatrixScaling(1.0f, 1.2f, 1.5f));
+	//model.Transform(dx::XMMatrixScaling(1.0f, 1.2f, 1.5f));
 
 	AddBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
 

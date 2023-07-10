@@ -58,7 +58,7 @@ public:
 	}
 
 	template<class V>
-	static IndexedTriangleList<V> MakeTesselatedIndependentCapNormals(int longDiv)
+	static IndexedTriangleList<V> MakeTesselatedIndependentFaces(int longDiv)
 	{
 		namespace dx = DirectX;
 		assert(longDiv >= 3);
@@ -79,7 +79,7 @@ public:
 			vertices.back().n = { 0.0f,0.0f,-1.0f };
 		}
 
-		//duplicate base for outwards normals
+		////duplicate base for outwards normals
 		const auto iBase2 = (unsigned short)(vertices.size());
 		for (int iLong = 0; iLong < longDiv; iLong++)
 		{
