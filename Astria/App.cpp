@@ -54,6 +54,10 @@ App::App()
 					gfx, rng, adist, ddist,
 					odist, rdist
 					);
+			case 5:
+				return std::make_unique<Sheet>(
+					gfx, rng, adist, ddist,
+					odist, rdist);
 			default:
 				assert(false && "impossible drawable option in factory");
 				return {};
@@ -71,7 +75,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 10, 20 };
-		std::uniform_int_distribution<int> typedist{ 4, 4};
+		std::uniform_int_distribution<int> typedist{ 4, 5};
 	};
 
 	drawables.reserve(nDrawables);
