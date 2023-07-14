@@ -9,7 +9,7 @@
 #include "Surface.h"
 #include "GDIPlusManager.h"
 #include "imgui/imgui.h"
-
+#include "TexturedCylinder.h"
 
 GDIPlusManager gdipm;
 
@@ -58,6 +58,10 @@ App::App()
 				return std::make_unique<Sheet>(
 					gfx, rng, adist, ddist,
 					odist, rdist);
+			case 6:
+				return std::make_unique<TexturedCylinder>(
+					gfx, rng, adist, ddist,
+					odist, rdist, latDist, longDist);
 			default:
 				assert(false && "impossible drawable option in factory");
 				return {};
@@ -75,7 +79,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 20 };
 		std::uniform_int_distribution<int> longDist{ 10, 20 };
-		std::uniform_int_distribution<int> typedist{ 4, 5};
+		std::uniform_int_distribution<int> typedist{ 6, 6};
 	};
 
 	drawables.reserve(nDrawables);

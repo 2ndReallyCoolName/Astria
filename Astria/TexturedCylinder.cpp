@@ -1,18 +1,19 @@
-#include "Sheet.h"
+#include "TexturedCylinder.h"
 #include "BindableBase.h"
 #include "GraphicsThrowMacros.h"
-#include "Plane.h"
 #include "Surface.h"
 #include "Texture.h"
 #include "Sampler.h"
+#include "CylinderVertices.h"
 
-
-Sheet::Sheet(Graphics& gfx,
+TexturedCylinder::TexturedCylinder(Graphics& gfx,
 	std::mt19937& rng,
 	std::uniform_real_distribution<float>& adist,
 	std::uniform_real_distribution<float>& ddist,
 	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist)
+	std::uniform_real_distribution<float>& rdist, 
+	std::uniform_int_distribution<int>& latDist,
+	std::uniform_int_distribution<int>& longDist)
 	:
 	ObjectBase(gfx, rng, adist, ddist, odist, rdist)
 {
@@ -26,19 +27,11 @@ Sheet::Sheet(Graphics& gfx,
 			dx::XMFLOAT3 n;
 			dx::XMFLOAT2 tc;
 		};
-
-		auto model = Plane::Make<Vertex>();
-
-		model.SetNormalsIndependentFlat();
-
-		model.vertices[0].tc = { 0.0f,0.0f };
-		model.vertices[1].tc = { 1.0f,0.0f };
-		model.vertices[2].tc = { 0.0f,1.0f };
-		model.vertices[3].tc = { 1.0f,1.0f };
-
-		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\ripple_water.jpg")));
+		auto model = CylinderVertices::MakeTesselatedTextureIndependentCapNormals<Vertex>(latDist(rng), longDist(rng));
 
 		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
+
+		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\red_abstract.jpg")));
 
 		AddStaticBind(std::make_unique<Sampler>(gfx));
 
