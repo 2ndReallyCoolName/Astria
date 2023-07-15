@@ -21,15 +21,6 @@ TexturedCylinder::TexturedCylinder(Graphics& gfx,
 
 	if (!IsStaticInitialized())
 	{
-		struct Vertex
-		{
-			dx::XMFLOAT3 pos;
-			dx::XMFLOAT3 n;
-			dx::XMFLOAT2 tc;
-		};
-		auto model = CylinderVertices::MakeTesselatedTextureIndependentCapNormals<Vertex>(latDist(rng), longDist(rng));
-
-		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
 
 		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\fire.jpg")));
 
@@ -40,8 +31,6 @@ TexturedCylinder::TexturedCylinder(Graphics& gfx,
 		AddStaticBind(std::move(pvs));
 
 		AddStaticBind(std::make_unique<PixelShader>(gfx, L"TexturedPhongPS.cso"));
-
-		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));
 
 		const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
 		{
@@ -61,10 +50,18 @@ TexturedCylinder::TexturedCylinder(Graphics& gfx,
 		} colorConst;
 		AddStaticBind(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, colorConst, 1u));
 	}
-	else
+
+	struct Vertex
 	{
-		SetIndexFromStatic();
-	}
+		dx::XMFLOAT3 pos;
+		dx::XMFLOAT3 n;
+		dx::XMFLOAT2 tc;
+	};
+	auto model = CylinderVertices::MakeTesselatedTextureIndependentCapNormals<Vertex>(latDist(rng), longDist(rng));
+
+	AddBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
+
+	AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, model.indices));
 
 	AddBind(std::make_unique<TransformCbuf>(gfx, *this));
 }

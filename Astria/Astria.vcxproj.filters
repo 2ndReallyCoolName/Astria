@@ -184,7 +184,7 @@
       <Filter>Source Files\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="TexturedSphere.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
