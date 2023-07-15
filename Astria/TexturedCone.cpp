@@ -1,18 +1,17 @@
-#include "TexturedCylinder.h"
+#include "TexturedCone.h"
 #include "BindableBase.h"
 #include "GraphicsThrowMacros.h"
 #include "Surface.h"
 #include "Texture.h"
 #include "Sampler.h"
-#include "CylinderVertices.h"
+#include "ConeVertices.h"
 
-TexturedCylinder::TexturedCylinder(Graphics& gfx,
+TexturedCone::TexturedCone(Graphics& gfx,
 	std::mt19937& rng,
 	std::uniform_real_distribution<float>& adist,
 	std::uniform_real_distribution<float>& ddist,
 	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist, 
-	std::uniform_int_distribution<int>& latDist,
+	std::uniform_real_distribution<float>& rdist,
 	std::uniform_int_distribution<int>& longDist)
 	:
 	ObjectBase(gfx, rng, adist, ddist, odist, rdist)
@@ -27,11 +26,11 @@ TexturedCylinder::TexturedCylinder(Graphics& gfx,
 			dx::XMFLOAT3 n;
 			dx::XMFLOAT2 tc;
 		};
-		auto model = CylinderVertices::MakeTesselatedTextureIndependentCapNormals<Vertex>(latDist(rng), longDist(rng));
+		auto model = ConeVertices::MakeTesselatedIndependentTextureFaces<Vertex>(longDist(rng));
 
 		AddStaticBind(std::make_unique<VertexBuffer>(gfx, model.vertices));
 
-		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\fire.jpg")));
+		AddStaticBind(std::make_unique<Texture>(gfx, Surface::FromFile("Images\\storm.jpg")));
 
 		AddStaticBind(std::make_unique<Sampler>(gfx));
 

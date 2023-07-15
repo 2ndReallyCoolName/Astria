@@ -204,7 +204,9 @@
     <ClCompile Include="SolidSphere.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturedCone.cpp" />
     <ClCompile Include="TexturedCylinder.cpp" />
+    <ClCompile Include="TexturedSphere.cpp" />
     <ClCompile Include="Topology.cpp" />
     <ClCompile Include="TransformCbuf.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
@@ -263,7 +265,9 @@
     <ClInclude Include="SphereVertices.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturedCone.h" />
     <ClInclude Include="TexturedCylinder.h" />
+    <ClInclude Include="TexturedSphere.h" />
     <ClInclude Include="Topology.h" />
     <ClInclude Include="TransformCbuf.h" />
     <ClInclude Include="VertexBuffer.h" />
