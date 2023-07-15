@@ -2,5 +2,5 @@ Astria
 
 3D Game Engine in development
 
+![image](https://github.com/2ndReallyCoolName/Astria/assets/16818715/7a4374be-0b0a-4474-aa58-aad13445d5bf)
 
-![image](https://github.com/2ndReallyCoolName/Astria/assets/16818715/953cad38-cdd9-4307-8ccb-7ff99e481411)
