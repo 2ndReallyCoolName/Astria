@@ -186,6 +186,9 @@
     <ClCompile Include="TexturedSphere.cpp">
       <Filter>Source Files\Drawable</Filter>
     </ClCompile>
+    <ClCompile Include="AssImpModel.cpp">
+      <Filter>Source Files\Drawable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AstriaException.h">
@@ -364,6 +367,9 @@
     </ClInclude>
     <ClInclude Include="TexturedSphere.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssImpModel.h">
+      <Filter>Header Files\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

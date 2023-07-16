@@ -12,6 +12,10 @@
 #include "TexturedCylinder.h"
 #include "TexturedCone.h"
 #include "TexturedSphere.h"
+#include "AssImpModel.h"
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 GDIPlusManager gdipm;
 
@@ -21,6 +25,8 @@ App::App()
 	wnd(1200, 800, "Astria"),
 	light(wnd.Gfx())
 {
+	Assimp::Importer imp;
+	auto model = imp.ReadFile("models\\spider.obj", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
 
 	class Factory {
 	public:
@@ -72,6 +78,10 @@ App::App()
 				return std::make_unique<TexturedSphere>(
 					gfx, rng, adist, ddist,
 					odist, rdist, latDist, longDist);
+			case 9:
+				return std::make_unique<AssImpModel>(
+					gfx, rng, adist, ddist,
+					odist, rdist, mat,  1.5f);
 			default:
 				assert(false && "impossible drawable option in factory");
 				return {};
@@ -89,7 +99,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 30 };
 		std::uniform_int_distribution<int> longDist{ 10, 30 };
-		std::uniform_int_distribution<int> typedist{ 0, 8};
+		std::uniform_int_distribution<int> typedist{ 9, 9};
 	};
 
 	drawables.reserve(nDrawables);

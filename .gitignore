@@ -13,3 +13,5 @@
 /Astria.sln
 /.vs
 /Astria/Images
+*.obj
+!Astria/Models/*.obj

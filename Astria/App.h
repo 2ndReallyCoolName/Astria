@@ -24,7 +24,7 @@ private:
 	AstriaTimer timer;
 	std::vector<std::unique_ptr<class Drawable>> drawables;
 	std::vector<class Box*> boxes;
-	static constexpr size_t nDrawables = 100;
+	static constexpr size_t nDrawables = 20;
 	float speed_factor = 1.0f;
 	Camera cam;
 	PointLight light;
