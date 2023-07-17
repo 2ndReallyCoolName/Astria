@@ -99,7 +99,7 @@ App::App()
 		std::uniform_real_distribution<float> cdist{ 0.0f, 1.0f };
 		std::uniform_int_distribution<int> latDist{ 10, 30 };
 		std::uniform_int_distribution<int> longDist{ 10, 30 };
-		std::uniform_int_distribution<int> typedist{ 9, 9};
+		std::uniform_int_distribution<int> typedist{ 8, 9};
 	};
 
 	drawables.reserve(nDrawables);
