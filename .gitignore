@@ -11,3 +11,7 @@
 /Debug
 /x64
 /Astria.sln
+/.vs
+/Astria/Images
+*.obj
+!Astria/Models/*.obj
